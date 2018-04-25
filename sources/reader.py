@@ -38,3 +38,10 @@ def read_all_characters(path):
     return characters
 
 
+def read_all_input(path):
+    return {
+        'map_size': read_size_map(path),
+        'moutains': read_all_mountains(path),
+        'treasures': read_all_treasures(path),
+        'characters': read_all_characters(path)
+    }
