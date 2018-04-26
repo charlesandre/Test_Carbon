@@ -34,7 +34,7 @@ def read_all_characters(path):
     characters = []
     for line in input_file.read().split('\n'):
         if(line[0] == 'A'):
-            characters.append([line.split('-')[1].strip(), int(line.split('-')[2]), int(line.split('-')[3]), line.split('-')[4].strip(), line.split('-')[5].strip()])
+            characters.append([line.split('-')[1].strip(), int(line.split('-')[2]), int(line.split('-')[3]), line.split('-')[4].strip(), line.split('-')[5].strip(), 0])
     return characters
 
 
