@@ -3,6 +3,18 @@ from sources import map_info
 from sources import move
 import click
 
+def run(in_file, out_file):
+    state = io.read_all_input(in_file)
+    if(map_info.is_map_valid(state)):
+        state = iterate(state)
+        formated_data = io.format_data(state)
+        if(io.output_data(formated_data, out_file)):
+            print "Success"
+            return True
+    return False
+
+
+
 def iterate(state):
     keep_on = True
     while(keep_on):
@@ -19,15 +31,10 @@ def make_move(state):
     return state
 
 @click.command()
-@click.option('--input_file', default="data/input.txt")
-@click.option('--out', default="data/output.txt")
-def run(input_file, out):
-    state = io.read_all_input(input_file)
-    if(map_info.is_map_valid(state)):
-        state = iterate(state)
-        formated_data = io.format_data(state)
-        if(io.output_data(formated_data, out)):
-            print "Success"
+@click.option('--in_file', default="data/input.txt")
+@click.option('--out_file', default="data/output.txt")
+def start(in_file, out_file):
+    run(in_file, out_file)
 
 if __name__ == "__main__":
-    run()
+    start()

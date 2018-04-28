@@ -3,6 +3,7 @@ import filecmp
 from sources import io
 from sources import map_info
 from sources import move
+import run
 
 class TestStringMethods(unittest.TestCase):
 
@@ -27,7 +28,6 @@ class TestStringMethods(unittest.TestCase):
         input_file = 'data/tests/test_input.txt'
         result = io.read_all_characters(input_file)
         expected_characters = [
-            ['Toto',3,2,'E','AADADAGGA', 0],
             ['Lara',1,1,'S','AADADAGGA', 0]
         ]
         self.assertEqual(expected_characters, result)
@@ -40,7 +40,6 @@ class TestStringMethods(unittest.TestCase):
             'moutains':[[1,0],[2,1]],
             'treasures':[[0,3,2],[1,3,3]],
             'characters':[
-                ['Toto',3,2,'E','AADADAGGA', 0],
                 ['Lara',1,1,'S','AADADAGGA', 0]
             ]
         }
@@ -220,8 +219,15 @@ class TestStringMethods(unittest.TestCase):
         result = move.add_one_point(test_char)
         self.assertEqual(result, ['Toto',1,1,'S','AADADAGGA', 1])
 
-    def test_iterations(self):
-        print("cool")
+    def test_general(self):
+        input_file = "data/tests/test_input.txt"
+        target = "data/tests/test_result.txt"
+        expected_result = "data/tests/test_expected_result.txt"
+        result = run.run(input_file, target)
+        if result:
+            self.assertEqual(filecmp.cmp(target, expected_result), True)
+
+
 
 if __name__ == '__main__':
     unittest.main()
