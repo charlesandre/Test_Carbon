@@ -2,8 +2,8 @@ FROM python:2.7
 
 COPY requirements.txt .
 
-RUN pip install -r requirements.txt
+RUN pip install click
 
-COPY ./sources .
+COPY . .
 
-RUN python script.py
+CMD python run.py /data/input.txt
