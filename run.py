@@ -31,9 +31,11 @@ def make_move(state):
     return state
 
 @click.command()
-@click.option('--in_file', default="data/input.txt")
-@click.option('--out_file', default="data/output.txt")
+@click.option('--in_file', default="input.txt")
+@click.option('--out_file', default="output.txt")
 def start(in_file, out_file):
+    in_file += "data/"
+    out_file += "data/"
     run(in_file, out_file)
 
 if __name__ == "__main__":
