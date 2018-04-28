@@ -1,34 +1,31 @@
 import unittest
-import numpy as np
-import sys
-sys.path.insert(0, './sources')
-import reader
-import writer
-import move
-import map_info
+import filecmp
+from sources import io
+from sources import map_info
+from sources import move
 
 class TestStringMethods(unittest.TestCase):
 
-##  Test for reader
+##  Test for io
 
     def test_map_size(self):
-        input_file = 'sources/test_input.txt'
-        result = reader.read_size_map(input_file)
+        input_file = 'data/tests/test_input.txt'
+        result = io.read_size_map(input_file)
         self.assertEquals([3, 4], result)
 
     def test_mountains_read(self):
-        input_file = 'sources/test_input.txt'
-        result = reader.read_all_mountains(input_file)
+        input_file = 'data/tests/test_input.txt'
+        result = io.read_all_mountains(input_file)
         self.assertEqual([[1,0],[2,1]], result)
 
     def test_treasures_read(self):
-        input_file = 'sources/test_input.txt'
-        result = reader.read_all_treasures(input_file)
+        input_file = 'data/tests/test_input.txt'
+        result = io.read_all_treasures(input_file)
         self.assertEqual([[0,3,2],[1,3,3]], result)
 
     def test_characters_read(self):
-        input_file = 'sources/test_input.txt'
-        result = reader.read_all_characters(input_file)
+        input_file = 'data/tests/test_input.txt'
+        result = io.read_all_characters(input_file)
         expected_characters = [
             ['Toto',3,2,'E','AADADAGGA', 0],
             ['Lara',1,1,'S','AADADAGGA', 0]
@@ -36,8 +33,8 @@ class TestStringMethods(unittest.TestCase):
         self.assertEqual(expected_characters, result)
 
     def test_general_input(self):
-        input_file = 'sources/test_input.txt'
-        result = reader.read_all_input(input_file)
+        input_file = 'data/tests/test_input.txt'
+        result = io.read_all_input(input_file)
         expect_result = {
             'map_size':[3, 4],
             'moutains':[[1,0],[2,1]],
@@ -62,7 +59,7 @@ class TestStringMethods(unittest.TestCase):
         result = map_info.is_map_valid(test_data)
         self.assertEqual(result[0], False)
 
-## Test for writer
+## Test for io
 
     def test_format_output(self):
         test_data = {
@@ -73,9 +70,16 @@ class TestStringMethods(unittest.TestCase):
                 ['Lara',1,1,'S','AADADAGGA', 3]
             ]
         }
-        result = writer.format_data(test_data)
+        result = io.format_data(test_data)
         self.assertEqual("C - 3 - 4\nM - 1 - 0\nT - 0 - 3 - 2\nA - Lara - 1 - 1 - S - 3\n", result)
 
+    def test_output_file(self):
+        test_data = "C - 3 - 4\nM - 1 - 0\nT - 0 - 3 - 2\nA - Lara - 1 - 1 - S - 3\n"
+        output_file = 'data/tests/output.txt'
+        result = io.output_data(test_data, output_file)
+        file1 = "data/tests/output.txt"
+        file2 = "data/tests/expected_output.txt"
+        self.assertEqual(filecmp.cmp(file1, file2), True)
 
 ## Test move element
     # Change direction
@@ -215,6 +219,9 @@ class TestStringMethods(unittest.TestCase):
         test_char = ['Toto',1,1,'S','AADADAGGA', 0]
         result = move.add_one_point(test_char)
         self.assertEqual(result, ['Toto',1,1,'S','AADADAGGA', 1])
+
+    def test_iterations(self):
+        print("cool")
 
 if __name__ == '__main__':
     unittest.main()
