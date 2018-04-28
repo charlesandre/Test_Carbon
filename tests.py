@@ -49,6 +49,18 @@ class TestStringMethods(unittest.TestCase):
         }
         self.assertEqual(expect_result, result)
 
+    def test_valid_map(self):
+        test_data = {
+            'map_size':[3, 4],
+            'moutains':[[1,0],[2,1]],
+            'treasures':[[0,4,2],[1,3,3]],
+            'characters':[
+                ['Toto',2,1,'E','AADADAGGA', 0],
+                ['Lara',1,1,'S','AADADAGGA', 0]
+            ]
+        }
+        result = map_info.is_map_valid(test_data)
+        self.assertEqual(result[0], False)
 
 ## Test for writer
 
@@ -89,6 +101,7 @@ class TestStringMethods(unittest.TestCase):
         })
 
         # Can't move beacause outside of bounds
+
     def test_move_action_2(self):
         raw_data  = {
             'map_size':[2, 2],
@@ -111,6 +124,7 @@ class TestStringMethods(unittest.TestCase):
         })
 
         #Can move but into a treasure
+
     def test_move_action_3(self):
         raw_data  = {
             'map_size':[4, 4],
@@ -133,6 +147,7 @@ class TestStringMethods(unittest.TestCase):
         })
 
         #Can move to an empty space
+
     def test_move_action_4(self):
         raw_data  = {
             'map_size':[4, 4],
@@ -156,7 +171,6 @@ class TestStringMethods(unittest.TestCase):
         test_char = ['Toto',3,2,'E','DADADAGGA', 0]
         result = move.modify_direction(test_char)
         self.assertEqual(result, ['Toto',3,2,'S','DADADAGGA', 0])
-
 
     def test_element_case(self):
         test_data = {
