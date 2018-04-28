@@ -1,4 +1,6 @@
 def info_case(data, x, y):
+    if x > data["map_size"][0] or y > data["map_size"][1]:
+        return 4
     for treasure in data["treasures"]:
         if treasure[0] == x and treasure[1] == y:
             return 1

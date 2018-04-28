@@ -1,7 +1,7 @@
 import numpy as np
 
 def read_size_map(path):
-    input_file = open(path,'r') 
+    input_file = open(path,'r')
     first_line = input_file.read().split('\n')[0]
     if(first_line[0] == 'C'):
         width = first_line.split('-')[1]
@@ -16,7 +16,7 @@ def read_all_mountains(path):
     mountains = []
     for line in input_file.read().split('\n'):
         if(line[0] == 'M'):
-            mountains.append((int(line.split('-')[1]), int(line.split('-')[2])))
+            mountains.append([int(line.split('-')[1]), int(line.split('-')[2])])
     return mountains
 
 
@@ -25,9 +25,9 @@ def read_all_treasures(path):
     treasures = []
     for line in input_file.read().split('\n'):
         if(line[0] == 'T'):
-            treasures.append((int(line.split('-')[1]), int(line.split('-')[2]), int(line.split('-')[3])))
+            treasures.append([int(line.split('-')[1]), int(line.split('-')[2]), int(line.split('-')[3])])
     return treasures
-    
+
 
 def read_all_characters(path):
     input_file = open(path,'r')
