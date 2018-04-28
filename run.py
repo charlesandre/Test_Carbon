@@ -18,10 +18,11 @@ def run(in_file, out_file):
 def iterate(state):
     keep_on = True
     while(keep_on):
+        keep_on = False
         state = make_move(state)
         for char in state["characters"]:
-            if len(char[4]) == 0:
-                keep_on = False
+            if len(char[4]) > 0:
+                keep_on = True
     return state
 
 def make_move(state):
@@ -34,8 +35,8 @@ def make_move(state):
 @click.option('--in_file', default="input.txt")
 @click.option('--out_file', default="output.txt")
 def start(in_file, out_file):
-    in_file += "data/"
-    out_file += "data/"
+    in_file = "data/" + in_file
+    out_file = "data/" + out_file
     run(in_file, out_file)
 
 if __name__ == "__main__":

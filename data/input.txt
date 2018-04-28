@@ -1,6 +1,12 @@
-C - 3 - 4
-M - 1 - 0
-M - 2 - 1
-T - 0 - 3 - 2
-T - 1 - 3 - 3
-A - Lara - 1 - 1 - S - AADADAGGA
+C - 10 - 10
+M - 2 - 3
+M - 3 - 3
+M - 5 - 3
+M - 4 - 5
+M - 4 - 7
+M - 8 - 6
+T - 4 - 2 - 1
+T - 2 - 4 - 3
+T - 7 - 3 - 2
+A - Charles - 2 - 2 - E - AADAADAAA
+A - Hugo - 6 - 7 - N - AA
