@@ -6,4 +6,6 @@ RUN pip install click
 
 COPY . .
 
-CMD python run.py /data/input.txt
+RUN python tests.py
+
+CMD python run.py

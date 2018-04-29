@@ -9,11 +9,8 @@ def run(in_file, out_file):
         state = iterate(state)
         formated_data = io.format_data(state)
         if(io.output_data(formated_data, out_file)):
-            print "Success"
             return True
     return False
-
-
 
 def iterate(state):
     keep_on = True
@@ -37,7 +34,9 @@ def make_move(state):
 def start(in_file, out_file):
     in_file = "data/" + in_file
     out_file = "data/" + out_file
-    run(in_file, out_file)
+    success = run(in_file, out_file)
+    if success:
+        print("Program executed correctly")
 
 if __name__ == "__main__":
     start()

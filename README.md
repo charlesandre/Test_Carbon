@@ -9,6 +9,7 @@ Exercice réalisé en python.
 * Python 2.7
 * Git
 * Pip
+* Docker
 
 #### Pour lancer :
 
@@ -34,5 +35,16 @@ Passer en paramètre le nom du fichier d'input et d'output
 ```
 python run.py inputfile outputfile #The output will be created, default : input.txt and output.txt
 ```
+
+
+### Avec Docker :
+```
+docker build -t myApp ./
+
+#Docker will run the tests when building
+
+docker run myApp # Default input and output file will be used.
+```
+
 
 Fait par Charles ANDRE
